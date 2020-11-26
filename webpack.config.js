@@ -32,6 +32,17 @@ const config = {
                 test: /\.css$/i,
                 // the order has to be executed from right to left
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                // asset type will check the file size and decide whether the file will be treated as inline or resource.
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        // set the max limit 20kb
+                        maxSize: 20 * 1024
+                    }
+                }
             }
         ],
     },
